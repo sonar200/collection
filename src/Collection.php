@@ -30,9 +30,32 @@ class Collection implements Iterator
      */
     public function add($value)
     {
-        if(!$this->vector->contains($value)){
+        $containsObject = gettype($value) == 'object' && !$this->containsObject($value);
+        $contains = gettype($value) != 'object' && !$this->vector->contains($value);
+
+        if ($containsObject || $contains) {
             $this->vector->push($value);
         }
+    }
+
+    /**
+     * Проверка наличия объекта в коллекции
+     *
+     * @param mixed $value
+     *
+     * @return bool
+     */
+    private function containsObject($value): bool
+    {
+        $list = $this->list();
+
+        foreach ($list as $item) {
+            if ($item == $value) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function count()
