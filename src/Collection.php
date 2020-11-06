@@ -18,6 +18,20 @@ class Collection implements Iterator
     /** @var Collection[] */
     protected static array $instances = [];
 
+    /**
+     * Включение строгой типизации для проверки элементов коллекции при добавлении
+     *
+     * @var bool
+     */
+    protected bool $strictMode = true;
+
+    /**
+     * Включение дублирующих записей в коллекции
+     *
+     * @var bool
+     */
+    protected bool $enableDublicate = true;
+
     protected Vector $vector;
     protected int $increment = 0;
 
@@ -30,10 +44,7 @@ class Collection implements Iterator
      */
     public function add($value)
     {
-        $containsObject = gettype($value) == 'object' && !$this->containsObject($value);
-        $contains = gettype($value) != 'object' && !$this->vector->contains($value);
-
-        if ($containsObject || $contains) {
+        if ($this->enableDublicate || (!$this->enableDublicate && !$this->contains($value))) {
             $this->vector->push($value);
         }
     }
@@ -41,21 +52,30 @@ class Collection implements Iterator
     /**
      * Проверка наличия объекта в коллекции
      *
-     * @param mixed $value
+     * @param mixed ...$values
      *
      * @return bool
      */
-    private function containsObject($value): bool
+    public function contains(...$values): bool
     {
-        $list = $this->list();
-
-        foreach ($list as $item) {
-            if ($item == $value) {
-                return true;
+        foreach ($values as $value) {
+            if ($this->find($value) === false) {
+                return false;
             }
         }
+        return true;
+    }
 
-        return false;
+    /**
+     * Поиск элемента в коллекции
+     *
+     * @param $value
+     *
+     * @return false|int|string
+     */
+    public function find($value)
+    {
+        return array_search($value, $this->list(), $this->strictMode && gettype($value) != 'object');
     }
 
     public function count()
@@ -141,15 +161,7 @@ class Collection implements Iterator
 
     public function list()
     {
-        $this->rewind();
-        $list = [];
-
-        while($item = $this->each()){
-            array_push($list, $item);
-        }
-        $this->rewind();
-
-        return $list;
+        return $this->vector->toArray();
     }
 
     public static function getInstance()
