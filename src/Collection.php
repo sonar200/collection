@@ -189,6 +189,9 @@ class Collection implements Iterator
     {
     }
 
+    /**
+     * test comment
+     */
     protected function __wakeup()
     {
     }
