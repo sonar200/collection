@@ -5,6 +5,7 @@ namespace Sonar200\Collection;
 
 
 use Ds\Vector;
+use Generator;
 use Iterator;
 
 /**
@@ -15,7 +16,9 @@ use Iterator;
  */
 class Collection implements Iterator
 {
-    /** @var Collection[] */
+    /**
+     * @var Collection[]
+     */
     protected static array $instances = [];
 
     /**
@@ -32,11 +35,22 @@ class Collection implements Iterator
      */
     protected bool $enableDublicate = true;
 
+    /**
+     * @var Vector
+     */
     protected Vector $vector;
-    protected int $increment = 0;
 
+    /**
+     * @var Generator|null
+     */
+    protected ?Generator $iterator;
+
+    /**
+     * Collection constructor.
+     */
     protected function __construct() {
         $this->vector = new Vector();
+        $this->iterator = $this->vector->getIterator();
     }
 
     /**
@@ -84,11 +98,21 @@ class Collection implements Iterator
     }
 
     /**
+     * @param int $index
+     *
+     * @return mixed
+     */
+    public function get(int $index)
+    {
+        return $this->vector->offsetGet($index);
+    }
+
+    /**
      * @inheritDoc
      */
     public function current()
     {
-        return $this->vector->get($this->increment);
+        return $this->iterator->current();
     }
 
     /**
@@ -96,30 +120,16 @@ class Collection implements Iterator
      */
     public function next()
     {
-        $this->increment++;
-
-        if($this->vector->offsetExists($this->increment)){
-            return $this->vector->get($this->increment);
-        }
-
-        return false;
+        $this->iterator->next();
     }
 
-    public function prev()
-    {
-        $this->increment--;
-
-        if($this->vector->offsetExists($this->increment)){
-            return $this->vector->get($this->increment);
-        }
-
-        return false;
-    }
 
     public function each()
     {
-        if($this->vector->offsetExists($this->increment)){
-            return $this->vector->get($this->increment++);
+        if($this->iterator->valid()){
+            $item = $this->iterator->current();
+            $this->iterator->next();
+            return $item;
         }
 
         return false;
@@ -130,7 +140,7 @@ class Collection implements Iterator
      */
     public function key()
     {
-        return $this->increment;
+        return $this->iterator->key();
     }
 
     /**
@@ -138,7 +148,7 @@ class Collection implements Iterator
      */
     public function valid()
     {
-
+        return $this->iterator->valid();
     }
 
     /**
@@ -146,7 +156,8 @@ class Collection implements Iterator
      */
     public function rewind()
     {
-        $this->increment = 0;
+        $this->iterator = null;
+        $this->iterator = $this->vector->getIterator();
     }
 
     public function first()
