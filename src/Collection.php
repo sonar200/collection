@@ -26,7 +26,7 @@ class Collection extends CollectionAbstract implements Iterator
 
     public function key()
     {
-        return $this->iterator->key();
+        $this->iterator->key();
     }
 
     public function valid()
