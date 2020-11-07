@@ -14,7 +14,6 @@
     ],
     "require": {
         "php": ">=7.4",
-        "php-ds/php-ds": "v1.3.0",
         "ext-json": "*"
     },
     "autoload": {
