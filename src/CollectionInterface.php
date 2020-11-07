@@ -9,10 +9,24 @@ namespace Sonar200\Collection;
  *
  * @package Sonar200\Collection
  */
-interface CollectionInterface extends  \ArrayAccess, \Countable, \JsonSerializable
+interface CollectionInterface
 {
+    /**
+     * Вставка в конец коллекции
+     *
+     * @param $value
+     *
+     * @return mixed
+     */
     public function add($value);
 
+    /**
+     * Поиск значения в коллекции
+     *
+     * @param $searchValue
+     *
+     * @return mixed
+     */
     public function find($searchValue);
 
     public function contains(...$value);
