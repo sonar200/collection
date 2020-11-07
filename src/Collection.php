@@ -4,12 +4,7 @@
 namespace Sonar200\Collection;
 
 
-use Ds\Vector;
-use Exception;
-use Generator;
 use Iterator;
-use Sonar200\Singleton\Singleton;
-use Traversable;
 
 /**
  * Class Style
@@ -17,7 +12,7 @@ use Traversable;
  * @package Core\Base\Template
  *
  */
-class Collection extends CollectionAbstract implements \Iterator
+class Collection extends CollectionAbstract implements Iterator
 {
     public function current()
     {
