@@ -19,7 +19,7 @@ abstract class CollectionAbstract extends CollectionArrayAccess
     /**
      *  Генерация итератора
      */
-    protected function getIterator()
+    public function getIterator()
     {
         foreach ($this->collection as $item) {
             yield $item;

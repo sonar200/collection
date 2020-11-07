@@ -27,6 +27,7 @@ interface CollectionInterface
      *
      * @return mixed
      */
+
     public function find($searchValue);
 
     public function contains(...$value);
