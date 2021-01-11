@@ -31,4 +31,20 @@ class CollectionProperties
      * @var array
      */
     protected $collection = [];
+
+    /**
+     * @param bool $strictMode
+     */
+    public function setStrictMode(bool $strictMode): void
+    {
+        $this->strictMode = $strictMode;
+    }
+
+    /**
+     * @param bool $enableDublicate
+     */
+    public function setEnableDublicate(bool $enableDublicate): void
+    {
+        $this->enableDublicate = $enableDublicate;
+    }
 }
