@@ -3,7 +3,11 @@
 
 namespace Sonar200\Collection;
 
-
+/**
+ * Class CollectionModify
+ *
+ * @package Sonar200\Collection
+ */
 class CollectionModify extends CollectionCountable implements CollectionInterface
 {
     /**
@@ -46,13 +50,13 @@ class CollectionModify extends CollectionCountable implements CollectionInterfac
     /**
      * Поиск элемента в коллекции
      *
-     * @param $value
+     * @param $searchValue
      *
      * @return false|int|string
      */
-    public function find($value)
+    public function find($searchValue)
     {
-        return array_search($value, $this->collection, $this->strictMode && gettype($value) != 'object');
+        return array_search($searchValue, $this->collection, $this->strictMode && gettype($searchValue) != 'object');
     }
 
     /**
@@ -65,6 +69,8 @@ class CollectionModify extends CollectionCountable implements CollectionInterfac
 
     /**
      * Копирование коллекции
+     *
+     * @return mixed
      */
     public function copy()
     {

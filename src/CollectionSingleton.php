@@ -7,7 +7,7 @@ namespace Sonar200\Collection;
 /**
  * Class Style
  *
- * @package Core\Base\Template
+ * @package Sonar200\Collection
  *
  */
 class CollectionSingleton extends Collection
@@ -17,7 +17,7 @@ class CollectionSingleton extends Collection
      *
      * @var array
      */
-    protected static array $instances = [];
+    protected static $instances = [];
 
     /**
      * Constructor
@@ -46,7 +46,8 @@ class CollectionSingleton extends Collection
     {
     }
 
-    public function copy(){
+    public function copy(): CollectionSingleton
+    {
         return $this;
     }
 
@@ -56,7 +57,7 @@ class CollectionSingleton extends Collection
      * @return Collection
      *
      */
-    public static function get()
+    public static function getInstance(): Collection
     {
         $class = get_called_class();
 
