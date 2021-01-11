@@ -5,7 +5,7 @@ namespace Sonar200\Collection;
 
 
 /**
- * Class Style
+ * Class CollectionSingleton
  *
  * @package Sonar200\Collection
  *

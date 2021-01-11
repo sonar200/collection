@@ -6,6 +6,11 @@ namespace Sonar200\Collection;
 
 use Countable;
 
+/**
+ * Class CollectionCountable
+ *
+ * @package Sonar200\Collection
+ */
 class CollectionCountable extends CollectionSerializable implements Countable
 {
 

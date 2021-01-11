@@ -6,6 +6,11 @@ namespace Sonar200\Collection;
 
 use Generator;
 
+/**
+ * Class CollectionProperties
+ *
+ * @package Sonar200\Collection
+ */
 class CollectionProperties
 {
     /**

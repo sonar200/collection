@@ -6,6 +6,11 @@ namespace Sonar200\Collection;
 
 use Generator;
 
+/**
+ * Class CollectionAbstract
+ *
+ * @package Sonar200\Collection
+ */
 abstract class CollectionAbstract extends CollectionArrayAccess
 {
     /**

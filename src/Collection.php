@@ -7,9 +7,9 @@ namespace Sonar200\Collection;
 use Iterator;
 
 /**
- * Class Style
+ * Class Collection
  *
- * @package Core\Base\Template
+ * @package Sonar200\Collection
  *
  */
 class Collection extends CollectionAbstract implements Iterator

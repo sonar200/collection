@@ -6,6 +6,12 @@ namespace Sonar200\Collection;
 
 use ArrayAccess;
 
+
+/**
+ * Class CollectionArrayAccess
+ *
+ * @package Sonar200\Collection
+ */
 class CollectionArrayAccess extends CollectionModify implements ArrayAccess
 {
     /**
