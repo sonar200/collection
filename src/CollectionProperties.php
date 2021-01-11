@@ -11,24 +11,24 @@ class CollectionProperties
     /**
      * @var Generator|null
      */
-    protected ?Generator $iterator = null;
+    protected $iterator = null;
 
     /**
      * Включение строгой типизации для проверки элементов коллекции при добавлении
      *
      * @var bool
      */
-    protected bool $strictMode = true;
+    protected $strictMode = true;
 
     /**
      * Включение дублирующих записей в коллекции
      *
      * @var bool
      */
-    protected bool $enableDublicate = true;
+    protected $enableDublicate = true;
 
     /**
      * @var array
      */
-    protected array $collection = [];
+    protected $collection = [];
 }

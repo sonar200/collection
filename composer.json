@@ -5,7 +5,7 @@
     "keywords": ["php", "collection"],
     "homepage": "https://github.com/sonar200/collection",
     "license": "MIT",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "authors": [
         {
             "name": "Ivan Ivanov",
@@ -13,8 +13,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4",
-        "php-ds/php-ds": "v1.3.0",
+        "php": ">=7.3",
         "ext-json": "*"
     },
     "autoload": {

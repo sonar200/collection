@@ -14,6 +14,14 @@ use Iterator;
  */
 class Collection extends CollectionAbstract implements Iterator
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * @return mixed
+     */
     public function current()
     {
         return $this->iterator->current();
@@ -29,7 +37,7 @@ class Collection extends CollectionAbstract implements Iterator
         $this->iterator->key();
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return $this->iterator->valid();
     }

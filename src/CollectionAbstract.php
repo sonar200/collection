@@ -4,6 +4,8 @@
 namespace Sonar200\Collection;
 
 
+use Generator;
+
 abstract class CollectionAbstract extends CollectionArrayAccess
 {
     /**
@@ -19,7 +21,7 @@ abstract class CollectionAbstract extends CollectionArrayAccess
     /**
      *  Генерация итератора
      */
-    public function getIterator()
+    public function getIterator(): Generator
     {
         foreach ($this->collection as $item) {
             yield $item;

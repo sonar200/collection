@@ -12,7 +12,7 @@ class CollectionCountable extends CollectionSerializable implements Countable
     /**
      * Размер коллекции
      */
-    public function count()
+    public function count(): int
     {
         return count($this->collection);
     }
