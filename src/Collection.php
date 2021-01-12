@@ -44,6 +44,6 @@ class Collection extends CollectionAbstract implements Iterator
 
     public function rewind()
     {
-        $this->iterator = $this->getIterator();
+        $this->iterator = $this->generateIterator();
     }
 }

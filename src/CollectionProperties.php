@@ -52,4 +52,12 @@ class CollectionProperties
     {
         $this->enableDublicate = $enableDublicate;
     }
+
+    /**
+     * @return Generator|null
+     */
+    public function getIterator(): ?Generator
+    {
+        return $this->iterator;
+    }
 }

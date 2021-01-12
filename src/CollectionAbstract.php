@@ -19,14 +19,14 @@ abstract class CollectionAbstract extends CollectionArrayAccess
     public function __construct()
     {
         if (!$this->iterator) {
-            $this->iterator = $this->getIterator();
+            $this->iterator = $this->generateIterator();
         }
     }
 
     /**
      *  Генерация итератора
      */
-    public function getIterator(): Generator
+    public function generateIterator(): Generator
     {
         foreach ($this->collection as $item) {
             yield $item;
